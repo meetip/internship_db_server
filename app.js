@@ -61,18 +61,18 @@ app.use(jsonParser);
 
 // api import
 
-const { login } = require("./api/login");
-const { upComing } = require("./api/up-coming");
-const { getfiles } = require("./api/getfiles");
-const { getWishlist } = require("./api/getwishlist");
-const { manageWishList } = require("./api/manageWishList");
+const { login } = require("/api/login");
+const { upComing } = require("/api/up-coming");
+const { getfiles } = require("/api/getfiles");
+const { getWishlist } = require("/api/getwishlist");
+const { manageWishList } = require("/api/manageWishList");
 const {
   fetchprv,
   fetchType,
   fetchSearchResult,
   fetchCoDetails,
   fetchMinor,
-} = require("./api/fetches");
+} = require("/api/fetches");
 const { editCo } = require("/api/editCo");
 const { updateUser } = require("/api/updateUser");
 const { resetPassword } = require("/api/resetPassword");
