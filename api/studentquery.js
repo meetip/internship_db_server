@@ -12,7 +12,7 @@ function studentquery(conn, req, res) {
   let query = `
       SELECT DISTINCT u.username, u.fname, u.lname, u.email,
       u.minor, u.tel, u.role, s.intern_type 
-      FROM user u
+      FROM users u
       LEFT JOIN senior_intern s ON u.username = s.std_id
       WHERE u.role = 'std'
       AND ${detectID()}
