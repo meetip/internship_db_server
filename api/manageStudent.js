@@ -7,7 +7,7 @@ function manageStudent(conn, req, res) {
             let query;
             if (isNaN(userQuery)) { // Check if userQuery is not a number
                 query = `
-                    SELECT * FROM user WHERE (fname LIKE "%${userQuery}%"
+                    SELECT * FROM users WHERE (fname LIKE "%${userQuery}%"
                     OR lname LIKE "%${userQuery}%")
                     AND NOT role = 'adm'
                     ORDER BY username
@@ -16,13 +16,13 @@ function manageStudent(conn, req, res) {
                 const len = userQuery.length;
                 if (len == 3) {
                     query = `
-                        SELECT * FROM user WHERE username LIKE "%${userQuery}"
+                        SELECT * FROM users WHERE username LIKE "%${userQuery}"
                         AND NOT role = 'adm'
                         ORDER BY username
                     `;
                 } else if (len <= 9) {
                     query = `
-                        SELECT * FROM user WHERE username LIKE "${userQuery}%"
+                        SELECT * FROM users WHERE username LIKE "${userQuery}%"
                         AND NOT role = 'adm'
                         ORDER BY username
                     `;
@@ -45,7 +45,7 @@ function manageStudent(conn, req, res) {
     }
     else if (action == 'del') {
         let query = `
-        DELETE FROM user
+        DELETE FROM users
         WHERE username = ? AND fname = ?
         `
         // console.log('delete')

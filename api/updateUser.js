@@ -2,7 +2,7 @@ function updateUser(conn, req, res) {
     const { where, value, username } = req.body;
     try {
       const query = `
-      UPDATE user
+      UPDATE users
       SET ${where} = ?
       WHERE username = ?
       `;

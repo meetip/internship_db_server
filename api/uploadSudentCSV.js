@@ -20,7 +20,7 @@ async function uploadStudentCSV(conn, req, res) {
   
       for (let row of csvRows) {
         const result = await new Promise((resolve, reject) => {
-          conn.query("SELECT * FROM user WHERE username = ?", [row.username], (error, result) => {
+          conn.query("SELECT * FROM users WHERE username = ?", [row.username], (error, result) => {
             if (error) {
               reject(error);
             } else {
@@ -32,7 +32,7 @@ async function uploadStudentCSV(conn, req, res) {
         if (result.length > 0) {
           await new Promise((resolve, reject) => {
             conn.query(
-              `UPDATE user
+              `UPDATE users
               SET password = ?, role = ?, fname = ?, lname = ?,
               email = ?, tel = ?, minor = ?
               WHERE username = ?`,
@@ -61,7 +61,7 @@ async function uploadStudentCSV(conn, req, res) {
         } else {
           await new Promise((resolve, reject) => {
             conn.query(
-              `INSERT INTO user (
+              `INSERT INTO users (
                 role, username, password, fname, lname, email, tel, minor
               ) VALUES (
                 ?, ?, ?, ?, ?, ?, ?, ?

@@ -4,7 +4,7 @@ function login(conn, req, res, next) {
 
   try {
     conn.execute(
-      "SELECT * FROM user WHERE username = ?",
+      "SELECT * FROM users WHERE username = ?",
       [uid],
       (err, users, fields) => {
         if (err) {
